@@ -1,13 +1,15 @@
 package com.example.teasystem.controller;
 
-import com.example.teasystem.entity.User;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+/**
+ * @author 谭舟耀
+ */
+@Controller
 public class IndexController {
     @RequestMapping("/login")
-   public String toLogin(){
-        return "login";
+    public String toLogin(){
+        return "manage/index";
     }
 }
