@@ -26,3 +26,6 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 #####appliction configure#####
+logging:
+  level:
+    root: info
