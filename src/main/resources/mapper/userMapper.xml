@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teasystem.mapper.UserMapper">
+
+    <resultMap id="userResultMap" type="com.example.teasystem.entity.User">
+        <id property="userId" column="userId"></id>
+        <result property="classesId" column="classesId"></result>
+        <result property="account" column="account"></result>
+        <result property="password" column="password"></result>
+        <result property="username" column="username"></result>
+        <result property="sex" column="sex"></result>
+        <result property="tel" column="tel"></result>
+    </resultMap>
+
+    <!--角色权限映射 -->
+    <resultMap id="RolesMap" type="com.example.teasystem.entity.Role" >
+        <id column="roleId" property="roleId" />
+        <result column="roleName" property="roleName" />
+        <!--权限集合-->
+        <collection property="permissions" column="id" javaType="list" select="selectUserRole"></collection>
+    </resultMap>
+    <!--用户角色映射 -->
+    <resultMap id="UserRolePermissionMap" type="com.example.teasystem.entity.User">
+        <result property="userId" column="userId" />
+        <collection property="role" column="id" javaType="com.example.teasystem.entity.Role" select="selectAllRoles"></collection>
+    </resultMap>
+
+    <!--用户登录-->
+    <select id="selectUser" resultType="com.example.teasystem.entity.User" parameterType="string">
+        select  * from user where account = #{account} and password =#{password}
+    </select>
+
+    <!--新增用户-->
+    <insert id="insertUser" parameterType="com.example.teasystem.entity.User">
+        insert into user(account,password,username,sex,tel) values (#{account},#{password},#{username},#{sex},#{tel})
+    </insert>
+
+    <!--根据用户ID查询角色信息-->
+    <select id="selectUserRole" resultType="com.example.teasystem.entity.UserRole" parameterType="string">
+        select  * from userrole where userid = #{userid}
+    </select>
+
+
+    <!--根据权限ID查询权限功能信息-->
+    <select id="selectPermission" resultType="com.example.teasystem.entity.Permission" parameterType="string">
+        select  *  from  role_permission where  perId in (select perId from role_permission where roleId = #{roleId})
+    </select>
+</mapper>
