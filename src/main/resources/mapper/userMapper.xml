@@ -38,12 +38,12 @@
     </insert>
 
     <!--根据用户ID查询角色信息-->
-    <select id="selectUserRole" resultType="com.example.teasystem.entity.Role" parameterType="string">
-        select  * from userrole where userid = #{userid}
+    <select id="selectUserRole" resultType="com.example.teasystem.entity.UserRole" parameterType="string">
+        select  * from user_role where userid = #{userid}
     </select>
 
 
-    <!--根据权限ID查询权限信息-->
+    <!--根据角色ID查询权限信息-->
     <select id="selectPermission" resultType="com.example.teasystem.entity.Permission" parameterType="string">
         select  *  from  permission where  perId in (select perId from role_permission where roleId = #{roleId})
     </select>

@@ -19,12 +19,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public ArrayList<User> selectUser(String account, String password) {
         ArrayList<User> users = usermap.selectUser(account, password);
-        return users;
+        return  users;
     }
 
     @Override
-    public ArrayList<Role> selectUserRole(String userId) {
-        ArrayList<Role> userRoles = usermap.selectUserRole(userId);
+    public ArrayList<UserRole> selectUserRole(String userId) {
+        ArrayList<UserRole> userRoles = usermap.selectUserRole(userId);
         return userRoles;
+    }
+
+    @Override
+    public ArrayList<Permission> selectPermission(String roleId) {
+        ArrayList<Permission> Permissions = usermap.selectPermission(roleId);
+        return Permissions;
     }
 }

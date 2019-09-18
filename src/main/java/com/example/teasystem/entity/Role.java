@@ -1,9 +1,6 @@
 package com.example.teasystem.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +13,7 @@ public class Role {
 
 
     @Id
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "roleId")
     public int getRoleId() {
         return roleId;

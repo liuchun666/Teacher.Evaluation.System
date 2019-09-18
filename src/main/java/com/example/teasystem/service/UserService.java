@@ -22,5 +22,6 @@ public interface UserService {
      * @param userId 用户Id
      * @return 返回角色id
      */
-    ArrayList<Role> selectUserRole(String userId);
+    ArrayList<UserRole> selectUserRole(String userId);
+    ArrayList<Permission> selectPermission(String roleId);
 }

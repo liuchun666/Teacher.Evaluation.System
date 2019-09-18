@@ -1,13 +1,11 @@
 package com.example.teasystem.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 @SuppressWarnings("ALL")
 @Entity
 public class User {
+
     private int userId;
     private Integer classesId;
     private String account;
@@ -18,6 +16,7 @@ public class User {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userId")
     public int getUserId() {
         return userId;
