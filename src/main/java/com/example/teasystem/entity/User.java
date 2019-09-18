@@ -5,11 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
-<<<<<<< HEAD
 
-=======
 @SuppressWarnings("ALL")
->>>>>>> 15bf53e42dc3c0ffe49d50e99600fc4a3bfd3f9e
 @Entity
 public class User {
     private int userId;
@@ -19,8 +16,6 @@ public class User {
     private String username;
     private String sex;
     private String tel;
-<<<<<<< HEAD
-=======
     private  Role role;
 
     public Role getRole() {
@@ -30,7 +25,6 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
->>>>>>> 15bf53e42dc3c0ffe49d50e99600fc4a3bfd3f9e
 
     @Id
     @Column(name = "userId")
