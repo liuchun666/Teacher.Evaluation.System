@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 @Repository
 public interface UserMapper {
-     ArrayList<User> selectUser(@Param("username") String username, @Param("password") String password);
-     ArrayList<UserRole> selectUserRole(int userId);
-    int insertUser(User user);
+     ArrayList<User> selectUser(@Param("account") String account, @Param("password") String password);
+     ArrayList<Role> selectUserRole(String userId);
+     int insertUser(User user);
      ArrayList<Permission> selectPermission(int roleId);
 
 

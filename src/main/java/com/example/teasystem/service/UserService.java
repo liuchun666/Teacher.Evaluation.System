@@ -1,7 +1,7 @@
 package com.example.teasystem.service;
 
-import com.example.teasystem.entity.User;
-import com.example.teasystem.entity.UserRole;
+import com.example.teasystem.entity.*;
+
 
 import java.util.ArrayList;
 
@@ -11,16 +11,16 @@ import java.util.ArrayList;
 public interface UserService {
     /**
      * 实现登录验证
-     * @param username 账号
+     * @param account 账号
      * @param password 密码
      * @return  返回ArrayList<User></>
      */
-    ArrayList<User> selectUser(String username, String password);
+    ArrayList<User> selectUser(String account, String password);
 
     /**
      * 实现角色判断
      * @param userId 用户Id
      * @return 返回角色id
      */
-    ArrayList<UserRole> selectUserRole(int userId);
+    ArrayList<Role> selectUserRole(String userId);
 }

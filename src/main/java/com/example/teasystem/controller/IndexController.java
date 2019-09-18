@@ -2,7 +2,7 @@ package com.example.teasystem.controller;
 
 import com.example.teasystem.entity.User;
 import com.example.teasystem.entity.UserRole;
-import com.example.teasystem.service.UserServiceImpl;
+import com.example.teasystem.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +18,8 @@ public class IndexController {
     @Autowired
     UserServiceImpl userServiceImpl;
     @RequestMapping("/index")
-    public String toIndex(String username,String password){
-        ArrayList<User> user =  userServiceImpl.selectUser(username,password);
-        ArrayList<UserRole> userRoles = userServiceImpl.selectUserRole(user.get(0).getUserId());
+    public String toIndex(String account,String password){
+        ArrayList<User> user =  userServiceImpl.selectUser(account,password);
         if(user.size()!=0){
             return "manage/index";
         }else{

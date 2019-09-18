@@ -29,7 +29,7 @@
 
     <!--用户登录-->
     <select id="selectUser" resultType="com.example.teasystem.entity.User" parameterType="string">
-        select  * from user where username = #{username} and password =#{password}
+        select  * from user where account = #{account} and password =#{password}
     </select>
 
     <!--新增用户-->
