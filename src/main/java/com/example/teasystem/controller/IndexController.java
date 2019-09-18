@@ -3,6 +3,7 @@ package com.example.teasystem.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 /**
  * @author 谭舟耀
  */
@@ -12,4 +13,9 @@ public class IndexController {
     public String toLogin(){
         return "manage/index";
     }
+
 }
+
+
+
+
