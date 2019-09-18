@@ -1,8 +1,9 @@
-package com.example.teasystem.service;
+package com.example.teasystem.service.impl;
 
 import com.example.teasystem.entity.User;
 import com.example.teasystem.entity.UserRole;
 import com.example.teasystem.mapper.UserMapper;
+import com.example.teasystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;

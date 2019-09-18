@@ -2,7 +2,7 @@ package com.example.teasystem.controller;
 
 import com.example.teasystem.entity.User;
 import com.example.teasystem.entity.UserRole;
-import com.example.teasystem.service.UserServiceImpl;
+import com.example.teasystem.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
