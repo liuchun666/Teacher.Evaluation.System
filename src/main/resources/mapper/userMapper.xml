@@ -29,7 +29,7 @@
 
     <!--用户登录-->
     <select id="selectUser" resultType="com.example.teasystem.entity.User" parameterType="string">
-        select  * from user where account = #{account} and password =#{password}
+        select  * from user where username = #{username} and password =#{password}
     </select>
 
     <!--新增用户-->
@@ -45,6 +45,6 @@
 
     <!--根据权限ID查询权限功能信息-->
     <select id="selectPermission" resultType="com.example.teasystem.entity.Permission" parameterType="string">
-        select  *  from  role_permission where  perId in (select perId from role_permission where roleId = #{roleId})
+        select  *  from  permission where  perId in (select perId from role_permission where roleId = #{roleId})
     </select>
 </mapper>

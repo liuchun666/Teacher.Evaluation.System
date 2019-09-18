@@ -15,15 +15,7 @@ public class User {
     private String username;
     private String sex;
     private String tel;
-    private  Role role;
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 
     @Id
     @Column(name = "userId")
