@@ -1,31 +1,39 @@
 package com.example.teasystem.controller;
 
-import lombok.extern.slf4j.Slf4j;
+import com.example.teasystem.entity.User;
+import com.example.teasystem.entity.UserRole;
+import com.example.teasystem.service.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.ArrayList;
 
 /**
  * @author 谭舟耀
  */
-@Slf4j
+@SuppressWarnings("ALL")
 @Controller
 public class IndexController {
+    @Autowired
+    UserServiceImpl userServiceImpl;
+    @RequestMapping("/index")
+    public String toIndex(String username,String password){
+        ArrayList<User> user =  userServiceImpl.selectUser(username,password);
+        ArrayList<UserRole> userRoles = userServiceImpl.selectUserRole(user.get(0).getUserId());
+        if(user.size()!=0){
+            return "manage/index";
+        }else{
+            System.out.print("登录失败");
+            return "error";
+        }
+
+    }
+
     @RequestMapping("/login")
     public String toLogin(){
         return "manage/login";
     }
 
-    @RequestMapping("/index")
-    public String toIndex(){
-        return "manage/index";
-    }
-
-    @RequestMapping("/log")
-    public String testLog(){
-        log.info("#########  info 你好 #########");
-        log.debug("#########  debug 不好#########");
-        log.error("#########  error  糟糕#########");
-        return "manage/index";
-    }
 
 }
