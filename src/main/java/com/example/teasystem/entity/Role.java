@@ -4,24 +4,23 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-<<<<<<< HEAD
+
 import java.util.Objects;
 
-=======
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@SuppressWarnings("ALL")
->>>>>>> 15bf53e42dc3c0ffe49d50e99600fc4a3bfd3f9e
+
 @Entity
 public class Role {
     private int roleId;
     private String roleName;
-<<<<<<< HEAD
+
 
     @Id
-=======
+
     private List<Permission> permissions;
 
     public List<Permission> getPermissions() {
@@ -34,7 +33,7 @@ public class Role {
 
     @Id
 
->>>>>>> 15bf53e42dc3c0ffe49d50e99600fc4a3bfd3f9e
+
     @Column(name = "roleId")
     public int getRoleId() {
         return roleId;
@@ -44,11 +43,10 @@ public class Role {
         this.roleId = roleId;
     }
 
-<<<<<<< HEAD
     @Basic
-=======
 
->>>>>>> 15bf53e42dc3c0ffe49d50e99600fc4a3bfd3f9e
+
+
     @Column(name = "roleName")
     public String getRoleName() {
         return roleName;
