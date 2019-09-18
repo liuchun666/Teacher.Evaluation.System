@@ -11,7 +11,7 @@
 </head>
 <body class="login-wrap">
     <div class="login-container">
-        <form class="login-form">
+        <form class="login-form" action="/index">
             <div class="input-group">
                 <input type="text" id="username" class="input-field">
                 <label for="username" class="input-label">
@@ -24,7 +24,7 @@
                     <span class="label-title">密码</span>
                 </label>
             </div>
-            <button type="button" class="login-button">登录<i class="ai ai-enter"></i></button>
+            <button class="login-button" lay-submit lay-filter="loginBut">登录<i class="ai ai-enter"></i></button>
         </form>
     </div>
 </body>

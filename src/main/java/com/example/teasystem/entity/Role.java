@@ -8,23 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@SuppressWarnings("ALL")
+
 @Entity
 public class Role {
     private int roleId;
     private String roleName;
-    private List<Permission> permissions;
-
-    public List<Permission> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(List<Permission> permissions) {
-        this.permissions = permissions;
-    }
 
     @Id
-
     @Column(name = "roleId")
     public int getRoleId() {
         return roleId;

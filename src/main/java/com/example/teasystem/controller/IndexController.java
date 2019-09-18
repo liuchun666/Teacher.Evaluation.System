@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
     @RequestMapping("/login")
     public String toLogin(){
+        return "manage/login";
+    }
+
+    @RequestMapping("/index")
+    public String toIndex(){
         return "manage/index";
     }
 }
