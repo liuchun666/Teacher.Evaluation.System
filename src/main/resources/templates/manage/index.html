@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +9,13 @@
     <link rel="stylesheet" href="../../static/css/layui.css">
     <link rel="stylesheet" href="../../static/css/admin.css">
     <link rel="icon" href="/favicon.ico">
+    <script src="../../static/plugins/jquery-3.4.0.js"></script>
     <title>管理后台</title>
 </head>
+/*@thymesVar id="permissions" type="javax"*/
+/*@thymesVar id="get" type="javax"*/
 <body class="layui-layout-body">
+<input  type="text"  th:value="${users.userId}" id="userId"></input>
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header custom-header">
             
@@ -21,7 +27,7 @@
 
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
-                    <a href="javascript:;">BieJun</a>
+                    <a href="javascript:;" th:text="${users.account}" ></a>
                     <dl class="layui-nav-child">
                         <dd><a href="">帮助中心</a></dd>
                         <dd><a href="login.html">退出</a></dd>
@@ -44,120 +50,36 @@
                             <em>主页</em>
                         </a>
                         <dl class="layui-nav-child">
-                            <dd><a href="views/console.html">控制台</a></dd>
+                            <dd><a href="views/console.html" >控制台</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;">
-                            <i class="layui-icon">&#xe770;</i>
-                            <em>用户管理</em>
+                            <i class="layui-icon">&#xe857;</i>
+                            <em>组件</em>
                         </a>
                         <dl class="layui-nav-child">
+
                             <dd><a href="admins/addUser.html">添加用户</a></dd>
-                            <dd><a href="views/users.html">用户组</a></dd>
+
+                            <dd><a href="views/form.html">表单</a></dd>
+
+                            <dd>
+                                <a href="javascript:;">页面</a>
+                                <dl class="layui-nav-child">
+                                    <dd>
+                                        <a href="login.html">登录页</a>
+                                    </dd>
+                                </dl>
+                            </dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;">
                             <i class="layui-icon">&#xe612;</i>
-                            <em>角色管理</em>
+                            <em>用户</em>
                         </a>
                         <dl class="layui-nav-child">
-                            <dd><a href="admins/addRole.html">添加角色</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe612;</i>
-                            <em>权限管理</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="views/operaterule.html">权限配置</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe612;</i>
-                            <em>院系管理</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="admins/addDepertments.html">添加院系</a></dd>
-                            <dd><a href="views/depertments.html">院系组</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe612;</i>
-                            <em>班级管理</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="admins/addUser.html">添加用户</a></dd>
-                            <dd><a href="views/users.html">用户组</a></dd>
-                            <dd><a href="views/operaterule.html">权限配置</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe612;</i>
-                            <em>课程管理</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="admins/addUser.html">添加用户</a></dd>
-                            <dd><a href="views/users.html">用户组</a></dd>
-                            <dd><a href="views/operaterule.html">权限配置</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe612;</i>
-                            <em>授课管理</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="admins/addUser.html">添加用户</a></dd>
-                            <dd><a href="views/users.html">用户组</a></dd>
-                            <dd><a href="views/operaterule.html">权限配置</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe612;</i>
-                            <em>指标管理</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="admins/addUser.html">添加用户</a></dd>
-                            <dd><a href="views/users.html">用户组</a></dd>
-                            <dd><a href="views/operaterule.html">权限配置</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe612;</i>
-                            <em>指标选项管理</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="admins/addUser.html">添加用户</a></dd>
-                            <dd><a href="views/users.html">用户组</a></dd>
-                            <dd><a href="views/operaterule.html">权限配置</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe612;</i>
-                            <em>角色指标管理</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="admins/addUser.html">添加用户</a></dd>
-                            <dd><a href="views/users.html">用户组</a></dd>
-                            <dd><a href="views/operaterule.html">权限配置</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe612;</i>
-                            <em>评价学期管理</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="admins/addUser.html">添加用户</a></dd>
                             <dd><a href="views/users.html">用户组</a></dd>
                             <dd><a href="views/operaterule.html">权限配置</a></dd>
                         </dl>
@@ -179,7 +101,9 @@
 
         <div class="mobile-mask"></div>
     </div>
+    <!--/*@thymesVar id="permissions" type=""*/-->
     <script src="../../static/layui.js"></script>
     <script src="../../static/manageJs/home.js"></script>
+
 </body>
 </html>
