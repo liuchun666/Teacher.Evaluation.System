@@ -41,4 +41,23 @@ public interface AdminMapper {
       * @return  Permission
       */
      ArrayList<Permission> selectPermissionSon(String perId);
+
+     /**
+      * 添加用户
+      * @param user user
+      * @return int
+      */
+     int addUser(User user);
+
+     /**删除用户
+      * @param account account
+      * @return int
+      */
+     int deleteUser(String account);
+
+     /**修改用户信息
+      * @param user user
+      * @return int
+      */
+     int updateUser(User user);
 }
