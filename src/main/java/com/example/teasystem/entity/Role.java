@@ -1,18 +1,11 @@
 package com.example.teasystem.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-import java.util.Objects;
-
-
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
+@SuppressWarnings("ALL")
 @Entity
 public class Role {
     private int roleId;
@@ -20,20 +13,7 @@ public class Role {
 
 
     @Id
-
-    private List<Permission> permissions;
-
-    public List<Permission> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(List<Permission> permissions) {
-        this.permissions = permissions;
-    }
-
-    @Id
-
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "roleId")
     public int getRoleId() {
         return roleId;
@@ -42,9 +22,6 @@ public class Role {
     public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
-
-    @Basic
-
 
 
     @Column(name = "roleName")

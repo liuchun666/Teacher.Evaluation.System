@@ -1,10 +1,27 @@
 package com.example.teasystem.service;
 
-import org.springframework.web.multipart.MultipartFile;
+import com.example.teasystem.entity.*;
 
+
+import java.util.ArrayList;
+
+/**
+ * 关于用户的接口类
+ */
 public interface UserService {
     /**
-     * 读取excel中的数据,生成list
+     * 实现登录验证
+     * @param account 账号
+     * @param password 密码
+     * @return  返回ArrayList<User></>
      */
-    String readExcelFile( MultipartFile file);
+    ArrayList<User> selectUser(String account, String password);
+
+    /**
+     * 实现角色判断
+     * @param userId 用户Id
+     * @return 返回角色id
+     */
+    ArrayList<UserRole> selectUserRole(String userId);
+    ArrayList<Permission> selectPermission(String roleId);
 }
