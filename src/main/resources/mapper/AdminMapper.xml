@@ -86,4 +86,17 @@
           update  role set roleName = #{roleName} where roleId = #{roleId}
     </>
 
+    <!-- 根据用户名删除用户-->
+    <delete id="deleteUser" parameterType="string">
+        delete from user where account = #{account}
+    </delete>
+    <!-- 根据用户名修改该用户-->
+    <update id="updateUser" parameterType="com.example.teasystem.entity.User">
+       update user set userId =#{userId},
+classesId=#{classesId},password=#{password},username = #{username},
+ sex=#{`ex},tel=#{tel}
+where account=#{account}
+    </update>
+
+
 </mapper>
