@@ -23,5 +23,18 @@ public interface UserService {
      * @return 返回角色id
      */
     ArrayList<UserRole> selectUserRole(String userId);
+
+    /**
+     * 权限查询（根据角色Id）
+     * @param roleId
+     * @return Permission
+     */
     ArrayList<Permission> selectPermission(String roleId);
+
+    /**
+     * 子权限查询（根据权限Id）
+     * @param perId
+     * @return Permission
+     */
+    ArrayList<Permission> selectPermissionSon(String perId);
 }

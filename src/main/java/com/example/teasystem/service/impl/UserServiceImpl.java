@@ -33,4 +33,10 @@ public class UserServiceImpl implements UserService {
         ArrayList<Permission> Permissions = usermap.selectPermission(roleId);
         return Permissions;
     }
+
+    @Override
+    public ArrayList<Permission> selectPermissionSon(String perId) {
+        ArrayList<Permission> Permissions = usermap.selectPermissionSon(perId);
+        return null;
+    }
 }

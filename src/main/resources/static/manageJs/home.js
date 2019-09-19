@@ -173,3 +173,15 @@ layui.define(['element','layer'],function(exports){
 
     exports('home',new Home);
 });
+$(function () {
+   var  userId= $("#userId").val();
+    $.ajax({
+        url:'/selectPerAjax',
+        data: {userId:userId},
+        type: 'post',
+        dataType:'json',
+        success: function (res) {
+            console.log(res)
+        }
+    })
+})
