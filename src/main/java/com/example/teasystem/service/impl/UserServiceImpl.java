@@ -1,7 +1,7 @@
 package com.example.teasystem.service.impl;
 
 import com.example.teasystem.entity.*;
-import com.example.teasystem.mapper.UserMapper;
+import com.example.teasystem.mapper.AdminMapper;
 import com.example.teasystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    UserMapper usermap;
+    AdminMapper usermap;
     @Override
     public ArrayList<User> selectUser(String account, String password) {
         ArrayList<User> users = usermap.selectUser(account, password);

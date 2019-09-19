@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 
 @Repository
-public interface UserMapper {
+public interface AdminMapper {
      /**
       * 登陆查询（根据账号密码）
       * @param account

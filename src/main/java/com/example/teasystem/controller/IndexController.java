@@ -1,10 +1,8 @@
 package com.example.teasystem.controller;
 
 import com.example.teasystem.entity.Permission;
-import com.example.teasystem.entity.Role;
 import com.example.teasystem.entity.User;
 import com.example.teasystem.entity.UserRole;
-import com.example.teasystem.mapper.UserMapper;
 import com.example.teasystem.service.impl.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
