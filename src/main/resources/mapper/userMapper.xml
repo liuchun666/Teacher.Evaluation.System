@@ -48,5 +48,8 @@
         select  *  from  permission where  perId in (select perId from role_permission where roleId = #{roleId})
     </select>
 
-
+    <!--根据权限ID查询子权限信息-->
+    <select id="selectPermissionSon" resultType="com.example.teasystem.entity.Permission" parameterType="string">
+        select  *  from  permission where  perParent = #{perId}
+    </select>
 </mapper>

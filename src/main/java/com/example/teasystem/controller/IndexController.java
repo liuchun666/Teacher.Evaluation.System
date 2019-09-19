@@ -9,8 +9,11 @@ import com.example.teasystem.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author 谭舟耀
@@ -20,27 +23,31 @@ import java.util.ArrayList;
 public class IndexController {
     @Autowired
     UserServiceImpl userServiceImpl;
+
     @RequestMapping("/index")
-    public String toIndex(String account,String password){
+    public ModelAndView toIndex(String account, String password){
+        Map<String,Object> map = new HashMap<>();
+        String nextView;
+        ArrayList<Permission> ps = new ArrayList<Permission>();;
         ArrayList<User> users =  userServiceImpl.selectUser(account,password);
         if(users.size() == 1){
-            System.out.print(".........");
            ArrayList<UserRole> roles =  userServiceImpl.selectUserRole(String.valueOf(users.get(0).getUserId()));
            if (roles.get(0).getRoleId() ==2){
                ArrayList<Permission> permissions = userServiceImpl.selectPermission(String.valueOf(roles.get(0).getRoleId()));
                for(int i = 0;i<=permissions.size()-1;i++){
-                   System.out.print(permissions.size());
-                   ArrayList<String> ps = new ArrayList<String>();
-                   ps.add(permissions.get(i).getPerName());
+                   ps.add(permissions.get(i));
                    System.out.print(permissions.get(i).getPerName());
                }
+               map.put("permissions",ps);
            }
-           return "manage/index";
+           nextView =  "manage/index";
         }else{
             System.out.print("登录失败");
-            return "error";
+            nextView ="error";
         }
-
+        ModelAndView modelAndView = new ModelAndView(nextView);
+        modelAndView.addAllObjects(map);
+        return  modelAndView;
     }
 
     @RequestMapping("/login")
