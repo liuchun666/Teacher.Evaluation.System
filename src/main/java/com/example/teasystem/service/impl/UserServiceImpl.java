@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public ArrayList<Permission> selectPermissionSon(String perId) {
         ArrayList<Permission> Permissions = adminMapper.selectPermissionSon(perId);
+<<<<<<< HEAD
         return Permissions;
     }
 
@@ -86,5 +87,26 @@ public class UserServiceImpl implements UserService {
     public int updataRole(String roleId) {
         int reg = adminMapper.updataRole(roleId);
         return reg;
+=======
+        return null;
+>>>>>>> origin/master
     }
+    @Override
+    public int addUser(User user) {
+        int i = adminMapper.addUser(user);
+        return 0;
+    }
+
+    @Override
+    public int deleteUser(String account) {
+        int i=adminMapper.deleteUser(account);
+        return i;
+    }
+
+    @Override
+    public int updateUser(User user) {
+        int i= adminMapper.updateUser(user);
+        return i;
+    }
+
 }

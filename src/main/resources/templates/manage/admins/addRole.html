@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-=======
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -24,10 +15,10 @@
         <div class="pagewrap">
                 <span class="layui-breadcrumb">
                   <a href="">首页</a>
-                  <a href="">用户管理</a>
-                  <a><cite>用户组</cite></a>
+                  <a href="">角色管理</a>
+                  <a><cite>添加角色</cite></a>
                 </span>
-            <h2 class="title">用户组</h2>
+            <h2 class="title">添加角色</h2>
         </div>
     </div>
     <div class="layui-row">
@@ -53,9 +44,9 @@
                             </div>
                             <button class="layui-btn layui-btn-blue">查询</button>
                             <button class="layui-btn layui-btn-primary">重置</button>
+                            <button style="margin-left: 400px;" class="layui-btn layui-btn-primary">批量添加角色</button>
                         </div>
                     </div>
-                    <button class="layui-btn layui-btn-blue"><i class="layui-icon">&#xe654;</i>新增</button>
                     <table id="demo"></table>
                 </div>
             </div>
@@ -64,7 +55,7 @@
 </div>
 <script src="../../../static/layui.all.js"></script>
 <script type="text/html" id="barDemo">
-    <button data-method="notice" class="layui-btn layui-btn-xs" lay-event="edit">修改</button>
+    <button data-method="notice" class="layui-btn layui-btn-xs" lay-event="edit">添加角色</button>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 <script>
@@ -78,16 +69,25 @@
             elem: '#demo'
             , cols: [[ //标题栏
                 {type: 'checkbox', fixed: 'left'}
-                , {field: 'deId', title: 'ID', width: 150}
-                , {field: 'deptName', title: '院系名称', width: 150}
+                , {field: 'account', title: '账号', width: 150}
+                , {field: 'username', title: '昵称', width: 150}
+                , {field: 'sex', title: '性别', width: 80}
+                , {field: 'tel', title: '手机号码', width: 150}
+                , {field: 'role', title: '角色', width: 250, sort: true}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 300}
             ]]
             , data: [{
-                "deId": "杜甫"
-                , "deptName": "xianxin@layui.com"
+                    "account": "杜甫"
+                , "username": "xianxin@layui.com"
+                , "sex": "男"
+                , "tel": "17723103007"
+                , "role": "学生"
             }, {
-                "deId": "杜甫"
-                , "deptName": "xianxin@layui.com"
+                "account": "杜甫"
+                , "username": "xianxin@layui.com"
+                , "sex": "男"
+                , "tel": "17723103007"
+                , "role": "主任"
             }]
             , skin: 'line' //表格风格
             , even: true
@@ -97,6 +97,5 @@
         });
     })
 </script>
->>>>>>> origin/master
 </body>
 </html>
