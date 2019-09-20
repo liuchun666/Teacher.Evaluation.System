@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * 关于用户的接口类
  */
-public interface UserService {
+public interface AdminService {
     /**
      * 实现登录验证
      * @param account 账号
@@ -93,12 +93,12 @@ public interface UserService {
      * @return
      */
     int updataRole(String roleId);
-=======
+    /**
      * 添加用户
      * @param user 用户值
      * @return int
      */
-    int addUser(User user);
+    int insertUser(User user);
 
     /**
      * 删除用户
@@ -113,7 +113,5 @@ public interface UserService {
      * @return int
      */
     int updateUser(User user);
->>>>>>> origin/master
-
 
 }

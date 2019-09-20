@@ -3,7 +3,7 @@ package com.example.teasystem.controller;
 import com.example.teasystem.entity.Permission;
 import com.example.teasystem.entity.User;
 import com.example.teasystem.entity.UserRole;
-import com.example.teasystem.service.impl.UserServiceImpl;
+import com.example.teasystem.service.impl.AdminServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +21,9 @@ import java.util.Map;
 @Slf4j
 @SuppressWarnings("ALL")
 @Controller
-public class IndexController {
+public class AdminController {
     @Autowired
-    UserServiceImpl userServiceImpl;
+    AdminServiceImpl adminServiceImpl;
 
     /**
      * 登陆处理
@@ -36,7 +36,7 @@ public class IndexController {
     public ModelAndView toIndex(String account, String password) {
         Map<String, Object> map = new HashMap<>();
         String nextView;
-        ArrayList<User> users = userServiceImpl.selectUser(account, password);
+        ArrayList<User> users = adminServiceImpl.selectUser(account, password);
         if (users.size() == 1) {
             map.put("users", users.get(0));
             nextView = "manage/index";
@@ -69,9 +69,9 @@ public class IndexController {
     public ArrayList<Permission> selectPerAjax(String userId) {
 
         ArrayList<Permission> permissions = new ArrayList<>();
-        ArrayList<UserRole> roles = userServiceImpl.selectUserRole(userId);
+        ArrayList<UserRole> roles = adminServiceImpl.selectUserRole(userId);
         if (roles.get(0).getRoleId() != null) {
-            permissions = userServiceImpl.selectPermission(String.valueOf(roles.get(0).getRoleId()));
+            permissions = adminServiceImpl.selectPermission(String.valueOf(roles.get(0).getRoleId()));
             return permissions;
         } else {
            return  null;
@@ -83,9 +83,9 @@ public class IndexController {
      *
      * @return
      */
-    @RequestMapping("/add")
+    @RequestMapping("/insetUser")
     public String addDept(String deptName) {
-        int reg = userServiceImpl.addDepartment(deptName);
+        int reg = adminServiceImpl.addDepartment(deptName);
 
         return "manage/login";
     }

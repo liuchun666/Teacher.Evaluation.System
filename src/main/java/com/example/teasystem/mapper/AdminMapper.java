@@ -57,7 +57,6 @@ public interface AdminMapper {
      ArrayList<Permission> selectPermissionSon(String perId);
 
      /**
-<<<<<<< HEAD
       * 添加院系
       * @param deptName
       * @return 1/0
@@ -112,9 +111,6 @@ public interface AdminMapper {
       * @return
       */
      int updataRole(String roleId);
-
-
-
 
 
 }

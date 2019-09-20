@@ -2,7 +2,7 @@ package com.example.teasystem.service.impl;
 
 import com.example.teasystem.entity.*;
 import com.example.teasystem.mapper.AdminMapper;
-import com.example.teasystem.service.UserService;
+import com.example.teasystem.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class AdminServiceImpl implements AdminService {
     @Autowired
     AdminMapper adminMapper;
     @Override
@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public ArrayList<Permission> selectPermissionSon(String perId) {
         ArrayList<Permission> Permissions = adminMapper.selectPermissionSon(perId);
-<<<<<<< HEAD
         return Permissions;
     }
 
@@ -87,26 +86,23 @@ public class UserServiceImpl implements UserService {
     public int updataRole(String roleId) {
         int reg = adminMapper.updataRole(roleId);
         return reg;
-=======
-        return null;
->>>>>>> origin/master
     }
     @Override
-    public int addUser(User user) {
-        int i = adminMapper.addUser(user);
-        return 0;
+    public int insertUser(User user) {
+        int reg = adminMapper.insertUser(user);
+        return reg;
     }
 
     @Override
     public int deleteUser(String account) {
-        int i=adminMapper.deleteUser(account);
-        return i;
+        int reg=adminMapper.deleteUser(account);
+        return reg;
     }
 
     @Override
     public int updateUser(User user) {
-        int i= adminMapper.updateUser(user);
-        return i;
+        int reg= adminMapper.updateUser(user);
+        return reg;
     }
 
 }
