@@ -15,7 +15,7 @@
             <div class="pagewrap">
                 <span class="layui-breadcrumb">
                   <a href="">首页</a>
-                  <a href="">用户</a>
+                  <a href="">用户管理</a>
                   <a><cite>用户组</cite></a>
                 </span>
                 <h2 class="title">用户组</h2>
@@ -27,11 +27,11 @@
                     <div class="form-box">
                         <div class="layui-form layui-form-item">
                             <div class="layui-inline">
-                                <div class="layui-form-mid">用户名:</div>
+                                <div class="layui-form-mid">账号:</div>
                                 <div class="layui-input-inline" style="width: 100px;">
                                   <input type="text" autocomplete="off" class="layui-input">
                                 </div>
-                                <div class="layui-form-mid">邮箱:</div>
+                                <div class="layui-form-mid">手机号码:</div>
                                 <div class="layui-input-inline" style="width: 100px;">
                                   <input type="text" autocomplete="off" class="layui-input">
                                 </div>
@@ -54,119 +54,158 @@
         </div>
     </div>
     <script src="../../../static/layui.all.js"></script>
+    <script type="text/html" id="barDemo">
+        <button data-method="notice" class="layui-btn layui-btn-xs" lay-event="edit">修改</button>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
     <script>
-      var element = layui.element;
-  var table = layui.table;
-  var form = layui.form;
-  
-  //展示已知数据
-  table.render({
-    elem: '#demo'
-    ,cols: [[ //标题栏
-      {field: 'id', title: 'ID', width: 80, sort: true}
-      ,{field: 'username', title: '用户名', width: 120}
-      ,{field: 'email', title: '邮箱', minWidth: 150}
-      ,{field: 'sign', title: '签名', minWidth: 160}
-      ,{field: 'sex', title: '性别', width: 80}
-      ,{field: 'city', title: '城市', width: 100}
-      ,{field: 'experience', title: '积分', width: 80, sort: true}
-    ]]
-    ,data: [{
-      "id": "10001"
-      ,"username": "杜甫"
-      ,"email": "xianxin@layui.com"
-      ,"sex": "男"
-      ,"city": "浙江杭州"
-      ,"sign": "人生恰似一场修行"
-      ,"experience": "116"
-      ,"ip": "192.168.0.8"
-      ,"logins": "108"
-      ,"joinTime": "2016-10-14"
-    }, {
-      "id": "10002"
-      ,"username": "李白"
-      ,"email": "xianxin@layui.com"
-      ,"sex": "男"
-      ,"city": "浙江杭州"
-      ,"sign": "人生恰似一场修行"
-      ,"experience": "12"
-      ,"ip": "192.168.0.8"
-      ,"logins": "106"
-      ,"joinTime": "2016-10-14"
-      ,"LAY_CHECKED": true
-    }, {
-      "id": "10003"
-      ,"username": "王勃"
-      ,"email": "xianxin@layui.com"
-      ,"sex": "男"
-      ,"city": "浙江杭州"
-      ,"sign": "人生恰似一场修行"
-      ,"experience": "65"
-      ,"ip": "192.168.0.8"
-      ,"logins": "106"
-      ,"joinTime": "2016-10-14"
-    }, {
-      "id": "10004"
-      ,"username": "贤心"
-      ,"email": "xianxin@layui.com"
-      ,"sex": "男"
-      ,"city": "浙江杭州"
-      ,"sign": "人生恰似一场修行"
-      ,"experience": "666"
-      ,"ip": "192.168.0.8"
-      ,"logins": "106"
-      ,"joinTime": "2016-10-14"
-    }, {
-      "id": "10005"
-      ,"username": "贤心"
-      ,"email": "xianxin@layui.com"
-      ,"sex": "男"
-      ,"city": "浙江杭州"
-      ,"sign": "人生恰似一场修行"
-      ,"experience": "86"
-      ,"ip": "192.168.0.8"
-      ,"logins": "106"
-      ,"joinTime": "2016-10-14"
-    }, {
-      "id": "10006"
-      ,"username": "贤心"
-      ,"email": "xianxin@layui.com"
-      ,"sex": "男"
-      ,"city": "浙江杭州"
-      ,"sign": "人生恰似一场修行"
-      ,"experience": "12"
-      ,"ip": "192.168.0.8"
-      ,"logins": "106"
-      ,"joinTime": "2016-10-14"
-    }, {
-      "id": "10007"
-      ,"username": "贤心"
-      ,"email": "xianxin@layui.com"
-      ,"sex": "男"
-      ,"city": "浙江杭州"
-      ,"sign": "人生恰似一场修行"
-      ,"experience": "16"
-      ,"ip": "192.168.0.8"
-      ,"logins": "106"
-      ,"joinTime": "2016-10-14"
-    }, {
-      "id": "10008"
-      ,"username": "贤心"
-      ,"email": "xianxin@layui.com"
-      ,"sex": "男"
-      ,"city": "浙江杭州"
-      ,"sign": "人生恰似一场修行"
-      ,"experience": "106"
-      ,"ip": "192.168.0.8"
-      ,"logins": "106"
-      ,"joinTime": "2016-10-14"
-    }]
-    ,skin: 'line' //表格风格
-    ,even: true
-    ,page: true //是否显示分页
-    ,limits: [5, 7, 10]
-    ,limit: 5 //每页默认显示的数量
-  });
+        layui.use('table', function() {
+            var element = layui.element;
+            var table = layui.table;
+            var form = layui.form;
+
+            //展示已知数据
+            table.render({
+                elem: '#demo'
+                , cols: [[ //标题栏
+                    {type: 'checkbox', fixed: 'left'}
+                    , {field: 'id', title: 'ID', width: 120, sort: true}
+                    , {field: 'account', title: '账号', width: 150}
+                    , {field: 'username', title: '昵称', width: 150}
+                    , {field: 'sex', title: '性别', width: 80}
+                    , {field: 'tel', title: '手机号码', width: 150}
+                    , {field: 'role', title: '角色', width: 250, sort: true}
+                    , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 300}
+                ]]
+                , data: [{
+                    "id": "10001"
+                    , "account": "杜甫"
+                    , "username": "xianxin@layui.com"
+                    , "sex": "男"
+                    , "tel": "17723103007"
+                    , "role": "学生"
+                }, {
+                    "id": "10001"
+                    , "account": "杜甫"
+                    , "username": "xianxin@layui.com"
+                    , "sex": "男"
+                    , "tel": "17723103007"
+                    , "role": "主任"
+                }]
+                , skin: 'line' //表格风格
+                , even: true
+                , page: true //是否显示分页
+                , limits: [5, 7, 10]
+                , limit: 5 //每页默认显示的数量
+            });
+        })
+  //       layui.use('table', function(){
+  //           var table = layui.table;
+  //           //第一个实例
+  //           table.render({
+  //               elem: '#test'
+  //               ,height: 350
+  //               ,toolbar: '#toolbarDemo'
+  //               ,url: '' //数据接口
+  //               ,page:true
+  //               ,totalRow:true
+  //               ,limit:5
+  //               ,limits: [5,10,20]
+  //               ,cols: [
+  //                   [ //表头
+  //                       {type: 'checkbox', fixed: 'left'}
+  //                       ,{field: 'id', title: 'ID', width: 120, sort: true}
+  //                       ,{field: 'account', title: '账号', width: 150}
+  //                       ,{field: 'username', title: '昵称', width: 150}
+  //                       ,{field: 'sex', title: '性别', width: 80}
+  //                       ,{field: 'tel', title: '手机号码', width: 150}
+  //                       ,{field: 'role', title: '角色', width:250, sort: true}
+  //                       ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:300}
+  //                   ]
+  //               ]
+  //               ,success:function (res) {
+  //                   console.log(res)
+  //               }
+  //           });
+  //           $('body').on('click',"#search",function(){
+  //               var adminName=$("input[name=adminName]").val()
+  //               console.log(adminName)
+  //               table.reload('test', {
+  //                   elem: '#test'
+  //                   ,height: 312
+  //                   ,toolbar: '#toolbarDemo'
+  //                   ,url: '/admin/queryAdmin'
+  //                   ,page:true
+  //                   ,totalRow:true
+  //                   ,limit:5
+  //                   ,limits: [5,10,20]
+  //                   ,cols: [
+  //                       [ //表头
+  //                           {type: 'checkbox', fixed: 'left'}
+  //                           ,{field: 'admin_id', title: 'ID', width:230, sort: true, fixed: 'left'}
+  //                           ,{field: 'admin_name', title: '用户名', width:230}
+  //                           ,{field: 'admin_password', title: '密码', width:230, sort: true}
+  //                           ,{field: 'role', title: '角色', width:250, sort: true}
+  //                           ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:230}
+  //                       ]
+  //                   ]
+  //                   ,where: {
+  //                       admin_name: $("input[name=adminName]").val()
+  //                   }
+  //               });
+  //           })
+  //
+  //           table.on('tool(test)', function(obj){
+  //               var data = obj.data;
+  //               if(obj.event === 'detail'){
+  //                   layer.msg('ID：'+ data.id + ' 的查看操作');
+  //               } else if(obj.event === 'del'){
+  //                   layer.confirm('真的删除行么', function(index){
+  //                       obj.del();
+  //                       console.log(obj)
+  //                       console.log(obj.data)
+  //                       deleteList(obj.data.admin_id)
+  //                       layer.close(index);
+  //
+  //                   });
+  //               } else if(obj.event === 'edit'){
+  //                   arr =[];
+  //                   arr.push(obj);
+  //                   arr.push(obj.data.admin_name);
+  //                   arr.push(obj.data.admin_password);
+  //                   arr.push(obj.data.role);
+  //                   console.log(arr)
+  //                   json = JSON.stringify(obj);
+  //                   layer.open({
+  //                       type: 2
+  //                       ,title:'修改管理员信息'
+  //                       ,area: ['700px', '450px']
+  //                       ,fixed: false //不固定
+  //                       ,maxmin: true
+  //                       ,shade: 0.8
+  //                       ,content: '/admin/UpadteAdminHtml'
+  //                       ,success:function () {
+  //
+  //                       }
+  //                       ,end:function () {
+  //                           location.reload();
+  //                       }
+  //                   });
+  //               }
+  //           });
+  //       });
+  //
+  //       function deleteList(admin_id){
+  //           $.ajax({
+  //               type: 'POST',
+  //               url: "/admin/DeleteAdmin",
+  //               data: { admin_id:admin_id},
+  //               dataType:'json',
+  //               success: function(data){
+  //                   console.log(data) //pages curr
+  //               }
+  //           });
+  //       };
     </script>
 </body>
 </html>

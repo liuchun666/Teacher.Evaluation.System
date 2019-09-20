@@ -37,4 +37,61 @@ public interface UserService {
      * @return Permission
      */
     ArrayList<Permission> selectPermissionSon(String perId);
+
+    /**
+     * 添加院系
+     * @param deptName
+     * @return
+     */
+    int addDepartment(String deptName);
+    /**
+     * 添加院系
+     * @param deId
+     * @return
+     */
+    int deleteDepartment(String deId);
+
+    /**
+     * 查询院系（模糊查询）
+     * @param deptName
+     * @return
+     */
+    ArrayList<Departments> selectDepartments(String deptName);
+
+    /**
+     * 修改院系信息
+     * @param deId
+     * @return
+     */
+    int updataDepartment(String deId);
+
+    /**
+     * 添加角色信息
+     * @param roleName
+     * @return
+     */
+    int addRole(String roleName);
+
+    /**
+     * 删除角色信息
+     * @param roleId
+     * @return
+     */
+    int deleteRole(String roleId);
+
+    /**
+     * 查询角色信息
+     * @param roleNmame
+     * @return
+     */
+    ArrayList<Role> selectRole(String roleNmame);
+
+    /**
+     * 修改院系
+     * @param roleId
+     * @return
+     */
+    int updataRole(String roleId);
+
+
 }

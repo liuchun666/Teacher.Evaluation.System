@@ -27,63 +27,81 @@
         <collection property="role" column="roleId" javaType="com.example.teasystem.entity.Role" select="selectUserRole"></collection>
     </resultMap>-->
 
-    <!--用户登录-->
-    <select id="selectUser" resultType="com.example.teasystem.entity.User" parameterType="string">
-        select  * from user where account = #{account} and password =#{password}
-    </select>
+        <!--用户登录-->
+        <select id="selectUser" resultType="com.example.teasystem.entity.User" parameterType="string">
+            select  * from user where account = #{account} and password =#{password}
+        </select>
 
-    <!--新增用户-->
-    <insert id="insertUser" parameterType="com.example.teasystem.entity.User">
-        insert into user(account,password,username,sex,tel) values (#{account},#{password},#{username},#{sex},#{tel})
-    </insert>
+        <!--新增用户-->
+        <insert id="insertUser" parameterType="com.example.teasystem.entity.User">
+            insert into user(account,password,username,sex,tel) values (#{account},#{password},#{username},#{sex},#{tel})
+        </insert>
 
-    <!--根据用户ID查询角色信息-->
-    <select id="selectUserRole" resultType="com.example.teasystem.entity.UserRole" parameterType="string">
-        select  * from user_role where userid = #{userid}
-    </select>
+        <!-- 根据用户名删除用户-->
+        <delete id="deleteUser" parameterType="string">
+            delete from user where account = #{account}
+        </delete>
+        <!-- 根据用户名修改该用户-->
+        <update id="updateUser" parameterType="com.example.teasystem.entity.User">
+           update user set userId =#{userId},
+          classesId=#{classesId},password=#{password},username = #{username},
+          sex=#{`ex},tel=#{tel}
+          where account=#{account}
+        </update>
+
+        <!--根据用户ID查询角色信息-->
+        <select id="selectUserRole" resultType="com.example.teasystem.entity.UserRole" parameterType="string">
+            select  * from user_role where userid = #{userid}
+        </select>
 
 
-    <!--根据角色ID查询权限信息-->
-    <select id="selectPermission" resultType="com.example.teasystem.entity.Permission" parameterType="string">
-        select  *  from  permission where  perId in (select perId from role_permission where roleId = #{roleId})
-    </select>
+        <!--根据角色ID查询权限信息-->
+        <select id="selectPermission" resultType="com.example.teasystem.entity.Permission" parameterType="string">
+            select  *  from  permission where  perId in (select perId from role_permission where roleId = #{roleId})
+        </select>
 
-    <!--根据权限ID查询子权限信息-->
-    <select id="selectPermissionSon" resultType="com.example.teasystem.entity.Permission" parameterType="string">
-        select  *  from  permission where  perParent = #{perId}
-    </select>
-    <!--增加院系-->
-    <insert id="addDepartment"  parameterType="string">
-          insert into departments(deptName) values (#{deptName}})
-    </>
-    <!--删除院系-->
-    <insert id="deleteDepartment"  parameterType="string">
-          delete from departments where deId = #{deId}
-    </>
-    <!--查询所有院系信息-->
-    <select id="selectDepartments" resultType="com.example.teasystem.entity.Departments">
-        select  *  from  departments where deptName like '%${deptName}%'
-    </select>
-    <!--修改院系名字-->
-    <insert id="updataDepartment"  parameterType="string">
-          update  departments set deptName = #{deptName} where deId = #{deId}
-    </>
+        <!--根据权限ID查询子权限信息-->
+        <select id="selectPermissionSon" resultType="com.example.teasystem.entity.Permission" parameterType="string">
+            select  *  from  permission where  perParent = #{perId}
+        </select>
 
-    <!--增加-->
-    <insert id="addRole"  parameterType="string">
-          insert into role(roleName) values (#{roleName}})
-    </>
-    <!--删除院系-->
-    <insert id="deleteRole"  parameterType="string">
-          delete from role where roleId = #{roleId}
-    </>
-    <!--查询所有院系信息-->
-    <select id="selectRole" resultType="com.example.teasystem.entity.Role">
-        select  *  from  role where roleName  like '%${roleName}%'
-    </select>
-    <!--修改院系名字-->
-    <insert id="updataRole"  parameterType="string">
-          update  role set roleName = #{roleName} where roleId = #{roleId}
-    </>
+      <!--增加院系-->
+        <insert id="addDepartment"  parameterType="string">
+              insert into departments(deptName) values(#{deptName})
+        </insert>
 
+           <!--删除院系-->
+           <insert id="deleteDepartment"  parameterType="string">
+                 delete from departments where deId = #{deId}
+           </insert>
+
+           <!--查询院系信息-->
+           <select id="selectDepartments" resultType="com.example.teasystem.entity.Departments">
+               select  *  from  departments where deptName like '%${deptName}%'
+           </select>
+
+           <!--修改院系名字-->
+           <insert id="updataDepartment"  parameterType="string">
+                 update  departments set deptName = #{deptName} where deId = #{deId}
+           </insert>
+
+           <!--增加角色-->
+           <insert id="addRole"  parameterType="string">
+                 insert into role(roleName) values(#{roleName})
+           </insert>
+
+           <!--删除角色-->
+           <insert id="deleteRole"  parameterType="string">
+                 delete from role where roleId = #{roleId}
+           </insert>
+
+           <!--查询角色信息-->
+           <select id="selectRole" resultType="com.example.teasystem.entity.Role">
+               select  *  from  role where roleName  like '%${roleName}%'
+           </select>
+
+           <!--修改角色名字-->
+           <insert id="updataRole"  parameterType="string">
+                 update  role set roleName = #{roleName} where roleId = #{roleId}
+           </insert>
 </mapper>

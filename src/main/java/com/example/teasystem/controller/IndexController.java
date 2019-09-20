@@ -77,4 +77,17 @@ public class IndexController {
            return  null;
         }
     }
+
+    /**
+     * 添加院系
+     *
+     * @return
+     */
+    @RequestMapping("/add")
+    public String addDept(String deptName) {
+        int reg = userServiceImpl.addDepartment(deptName);
+
+        return "manage/login";
+    }
+
 }
