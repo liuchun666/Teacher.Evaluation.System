@@ -176,7 +176,7 @@ layui.define(['element','layer'],function(exports){
 $(function () {
    var  userId= $("#userId").val();
     $.ajax({
-        url:'/selectPerAjax',
+        url:'/admins/selectPerAjax',
         data: {userId:userId},
         type: 'post',
         dataType:'json',

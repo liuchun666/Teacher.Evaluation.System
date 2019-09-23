@@ -50,6 +50,11 @@
           where account=#{account}
         </update>
 
+    <!--查询用户信息-->
+        <select id="selectUsers" resultType="com.example.teasystem.entity.User" parameterType="string">
+               select  *  from  user where account like '%${keypass}%' or username like '%${keypss}%'
+           </select>
+
         <!--根据用户ID查询角色信息-->
         <select id="selectUserRole" resultType="com.example.teasystem.entity.UserRole" parameterType="string">
             select  * from user_role where userid = #{userid}
@@ -82,7 +87,7 @@
            </select>
 
            <!--修改院系名字-->
-           <insert id="updataDepartment"  parameterType="string">
+           <insert id="updataDepartment"  parameterType="com.example.teasystem.entity.Departments">
                  update  departments set deptName = #{deptName} where deId = #{deId}
            </insert>
 
@@ -102,7 +107,7 @@
            </select>
 
            <!--修改角色名字-->
-           <insert id="updataRole"  parameterType="string">
+           <insert id="updataRole"  parameterType="com.example.teasystem.entity.Role">
                  update  role set roleName = #{roleName} where roleId = #{roleId}
            </insert>
 

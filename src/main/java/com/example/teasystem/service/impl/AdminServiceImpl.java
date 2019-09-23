@@ -59,8 +59,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public int updataDepartment(String deId) {
-        int reg = adminMapper.updataDepartment(deId);
+    public int updataDepartment(Departments departments) {
+        int reg = adminMapper.updataDepartment(departments);
         return reg;
     }
 
@@ -83,8 +83,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public int updataRole(String roleId) {
-        int reg = adminMapper.updataRole(roleId);
+    public int updataRole(Role role) {
+        int reg = adminMapper.updataRole(role);
         return reg;
     }
     @Override
@@ -103,6 +103,12 @@ public class AdminServiceImpl implements AdminService {
     public int updateUser(User user) {
         int reg= adminMapper.updateUser(user);
         return reg;
+    }
+
+    @Override
+    public ArrayList<User> selectUsers(String keyPass) {
+        ArrayList<User> user = adminMapper.selectUsers(keyPass);
+        return user;
     }
 
 }

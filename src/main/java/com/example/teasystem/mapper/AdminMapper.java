@@ -42,6 +42,15 @@ public interface AdminMapper {
       */
      int updateUser(User User);
 
+    /**
+     * 查询用户（模糊查询)
+     * @param keyPass
+     * @return Permission
+     */
+    ArrayList<User> selectUsers(String keyPass);
+
+
+
      /**
       * 查询角色权限（根据角色Id)
       * @param roleId
@@ -79,10 +88,10 @@ public interface AdminMapper {
 
      /**
       * 修改院系
-      * @param deptId
+      * @param departments
       * @return
       */
-     int updataDepartment(String deptId);
+     int updataDepartment(Departments departments);
 
      /**
       * 添加角色
@@ -107,10 +116,10 @@ public interface AdminMapper {
 
      /**
       * 修改院系
-      * @param roleId
+      * @param role
       * @return
       */
-     int updataRole(String roleId);
+     int updataRole(Role role);
 
 
 }

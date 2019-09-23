@@ -39,7 +39,6 @@ public interface AdminService {
     ArrayList<Permission> selectPermissionSon(String perId);
 
     /**
-<<<<<<< HEAD
      * 添加院系
      * @param deptName
      * @return
@@ -61,10 +60,10 @@ public interface AdminService {
 
     /**
      * 修改院系信息
-     * @param deId
+     * @param departments
      * @return
      */
-    int updataDepartment(String deId);
+    int updataDepartment(Departments departments);
 
     /**
      * 添加角色信息
@@ -89,10 +88,10 @@ public interface AdminService {
 
     /**
      * 修改院系
-     * @param roleId
+     * @param role
      * @return
      */
-    int updataRole(String roleId);
+    int updataRole(Role role);
     /**
      * 添加用户
      * @param user 用户值
@@ -113,5 +112,12 @@ public interface AdminService {
      * @return int
      */
     int updateUser(User user);
+
+    /**
+     * 查询用户（模糊查询)
+     * @param keyPass
+     * @return Permission
+     */
+    ArrayList<User> selectUsers(String keyPass);
 
 }
