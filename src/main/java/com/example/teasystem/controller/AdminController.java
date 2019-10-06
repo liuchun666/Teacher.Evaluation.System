@@ -259,4 +259,71 @@ public class AdminController {
             return false;
         }
     }
+
+    /**
+     * 添加权限
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/insetRole")
+    public ResponseWrapper insetPermission(Permission permission) {
+        int reg = adminServiceImpl.addPermission(permission);
+        if(reg > 0){
+            return ResponseWrapper.ADDSuccess();
+        }else{
+            return ResponseWrapper.ADDError();
+        }
+    }
+
+    /**
+     * 删除权限
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/deletePermission")
+    public ResponseWrapper deletePermission(String perId) {
+        int reg = adminServiceImpl.deletePermission(perId);
+        if(reg > 0){
+            return ResponseWrapper.deleteSuccess();
+        }else{
+            return ResponseWrapper.deleteError();
+        }
+    }
+
+    /**
+     * 模糊查询权限
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("seletePermission")
+    public ResponseWrapper seletePermission(String perName) {
+        ArrayList<Permission> permissions = adminServiceImpl.selectPermissionList(perName);
+        if(permissions.size()==0){
+            return ResponseWrapper.markSuccessButNoData();
+        }else if(permissions.size()>=0){
+            return ResponseWrapper.markSuccess(permissions,0);
+        }else{
+            return ResponseWrapper.markError();
+        }
+    }
+
+
+    /**
+     * 修改权限信息
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/updataPermission")
+    public ResponseWrapper updataPermission(Permission permission) {
+        int reg = adminServiceImpl.updataPermission(permission);
+        if(reg > 0){
+            return ResponseWrapper.UPDATESuccess();
+        }else{
+            return ResponseWrapper.UPDATEError();
+        }
+    }
 }
